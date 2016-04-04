@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'vmware-vra'
   spec.version       = Vra::VERSION
   spec.authors       = ['Adam Leff']
-  spec.email         = ['partnereng@chef.io']
+  spec.email         = ['corey@nwops.io']
   spec.summary       = 'Client gem for interacting with VMware vRealize Automation.'
   spec.description   = spec.summary
   spec.homepage      = ''
@@ -19,7 +19,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'rest-client',    '~> 1.8'
-  spec.add_dependency 'ffi-yajl',       '~> 2.2'
   spec.add_dependency 'passwordmasker', '~> 1.2'
 
   spec.add_development_dependency 'bundler', '~> 1.7'

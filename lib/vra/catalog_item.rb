@@ -15,8 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-require 'ffi_yajl'
+require 'json'
 
 module Vra
   class CatalogItem
@@ -42,7 +41,7 @@ module Vra
     end
 
     def fetch_catalog_item
-      @catalog_item_data = FFI_Yajl::Parser.parse(client.http_get!("/catalog-service/api/consumer/catalogItems/#{id}"))
+      @catalog_item_data = JSON.parse(client.http_get!("/catalog-service/api/consumer/catalogItems/#{id}"))
     rescue Vra::Exception::HTTPNotFound
       raise Vra::Exception::NotFound, "catalog ID #{id} does not exist"
     end

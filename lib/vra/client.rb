@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require 'ffi_yajl'
+require 'json'
 require 'rest-client'
 require 'passwordmasker'
 
@@ -104,12 +104,12 @@ module Vra
       @bearer_token.value = nil
       validate_client_options!
 
-      response = http_post('/identity/api/tokens', FFI_Yajl::Encoder.encode(bearer_token_request_body), :skip_auth)
+      response = http_post('/identity/api/tokens', bearer_token_request_body.to_json, :skip_auth)
       if response.code != 200
         raise Vra::Exception::Unauthorized, "Unable to get bearer token: #{response.body}"
       end
 
-      @bearer_token.value = FFI_Yajl::Parser.parse(response.body)['id']
+      @bearer_token.value = JSON.parse(response.body)['id']
     end
 
     def full_url(path)
@@ -153,7 +153,7 @@ module Vra
       base_path = path + "?limit=#{page_size}"
 
       loop do
-        response = FFI_Yajl::Parser.parse(http_get!("#{base_path}&page=#{page}"))
+        response = JSON.parse(http_get!("#{base_path}&page=#{page}"))
         items += response['content']
 
         break if page >= response['metadata']['totalPages']

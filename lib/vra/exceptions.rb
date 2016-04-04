@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require 'ffi_yajl'
+require 'json'
 
 module Vra
   module Exception
@@ -39,8 +39,11 @@ module Vra
 
       def parse_errors
         begin
-          data = FFI_Yajl::Parser.parse(@body)
-        rescue FFI_Yajl::ParseError
+          if @body.nil?
+            return
+          end
+          data = JSON.parse(@body)
+        rescue JSON::ParserError => e
           return
         end
 
