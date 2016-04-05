@@ -1,19 +1,25 @@
-# VMware vRA Gem
+# VMware vRA Rest API Gem
 
 Client gem for interacting with VMware's vRealize Automation application.
 
 Not all vRA functionality is included in this gem; only API calls necessary
 to interact with the catalog, requests, and existing items is included.
 
-The primary goal of this gem is to provide a reusable set of methods in order
-to create Chef plugins for knife, test-kitchen, and provisioning.
+**Notice**
+
+This is a fork of the https://github.com/chef-partners/vmware-vra-gem gem that is
+non chef specific and uses core json libraries instead the compiled yajl library.
+Since minimizing gem dependencies was important to me I decided to fork this. I will also be adding additional
+features that will further separate this gem from the forked version.
+
+The usage is the same and we will continue to pull in fixes from the forked gem.  If you were previously using the vmware-vra gem from chef this will be a drop in replacement. No code changes necessary other than `require 'vra-restapi'` instead of `require 'vra'`
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'vmware-vra'
+gem 'vra-restapi'
 ```
 
 And then execute:
@@ -22,14 +28,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install vmware-vra
+    $ gem install vra-restapi
 
 ## Usage
 
 First, load in the gem.
 
 ```
-require 'vra'
+require 'vra-restapi'
 => true
 ```
 
@@ -185,8 +191,9 @@ client.page_size = 100
 ```
 
 ## License and Authors
+Forked maintained by NWops <corey@nwops.io>
 
-Author:: Chef Partner Engineering (<partnereng@chef.io>)
+Original Author:: Chef Partner Engineering (<partnereng@chef.io>)
 
 Copyright:: Copyright (c) 2015 Chef Software, Inc.
 
@@ -206,7 +213,7 @@ and limitations under the License.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/vmware-vra-gem/fork )
+1. Fork it ( https://github.com/[my-github-username]/vra-restapi/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

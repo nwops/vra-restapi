@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'vra/version'
+require 'vra-restapi/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'vmware-vra'
+  spec.name          = 'vra-restapi'
   spec.version       = Vra::VERSION
-  spec.authors       = ['Adam Leff']
+  spec.authors       = ['Corey Osman']
   spec.email         = ['corey@nwops.io']
   spec.summary       = 'Client gem for interacting with VMware vRealize Automation.'
   spec.description   = spec.summary
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/nwops/vra-restapi'
   spec.license       = 'Apache 2.0'
 
   spec.files         = `git ls-files -z`.split("\x0")

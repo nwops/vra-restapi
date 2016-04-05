@@ -163,7 +163,7 @@ module Vra
       raise Vra::Exception::DuplicateItemsDetected,
             'Duplicate items were returned by the vRA API. ' \
             'Increase your page size to avoid this vRA API bug. ' \
-            'See https://github.com/chef-partners/vmware-vra-gem#pagination ' \
+            'See https://github.com/nwops/vra-restapi#pagination ' \
             'for more information.' if items.uniq!
 
       items
